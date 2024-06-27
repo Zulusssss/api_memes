@@ -12,19 +12,12 @@
 - PUT /memes/{id}: Обновить существующий мем.
 - DELETE /memes/{id}: Удалить мем.
 
-## Запуск проекта
-
-### Предварительные требования
-
-- Docker
-- Docker Compose
-
-### Шаги для запуска
+### Инструкция для запуска:
 
 1. Клонируйте репозиторий:
     ```sh
     git clone <URL>
-    cd <репозиторий>
+    cd <repository>
     ```
 
 2. Запустите Docker Compose:
@@ -32,14 +25,19 @@
     docker-compose up --build
     ```
 
-3. API будет доступно по адресу: [http://localhost:8000](http://localhost:8000)
+3. По ссылке [http://localhost:9000](http://localhost:9000) будет доступна административная консоль MinIO. Создайте там bucket с названием 'memes'.
+Можно использовать и другое название, но тогда необходимо внести его в docker-compose.yml MINIO_BUCKET.
+
+4. API будет доступно по адресу: [http://localhost:8000](http://localhost:8000)
 
 ### Документация API
 
 После запуска, документация API будет доступна по адресу: [http://localhost:8000/docs](http://localhost:8000/docs)
 
 ### Тестирование
+1. Выполните действия, указанные в инструкции по запуску проекта.
 
-Для запуска тестов используйте команду:
+2. Для запуска тестов используйте команду:
 ```sh
-pytest
+docker exec -it <container_id_or_name> pytest /app/test_main.py
+```
